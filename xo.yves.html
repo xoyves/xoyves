@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xo.yves</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            overflow: hidden;
+            position: relative; /* Add position relative to body and html */
+        }
+        .profile-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://media.discordapp.net/attachments/1239003993984991332/1243895339774119976/lv_0_20240523014547.gif?ex=6653234f&is=6651d1cf&hm=84c1863851ac4a589ada21a3347f5beb71accfbd763168228d0752103207bffd&') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-info {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 80%;
+            max-width: 350px;
+        }
+        .profile-info img {
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            margin-bottom: 10px;
+        }
+        .profile-info h2 {
+            margin: 10px 0;
+            font-size: 18px;
+            color: white;
+        }
+        .profile-info p {
+            font-size: 14px;
+            margin: 5px 0;
+            color: white;
+        }
+        .social-links a {
+            display: inline-block;
+            margin: 0 5px;
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        .social-links img {
+            width: 30px;
+            height: 30px;
+        }
+        /* Mute button style */
+        .mute-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .mute-button img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .mute-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            opacity: 0; /* Hide by default */
+            transition: opacity 0.3s ease;
+        }
+        .muted .mute-indicator {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-info">
+            <img src="https://media.discordapp.net/attachments/1239003993984991332/1243912053861908490/pinterest_778348748120857874_1.jpg?ex=665332e0&is=6651e160&hm=190bcdf7c7768a0094e93a5f756106ad9a278dd88e947f131511323e41fbe517&" alt="Profile Picture">
+            <h2>xo.yves</h2>
+            <p>never beg someone to stay, because to beg is water</p>
+            <p>/revshit</p>
+            <p>/revgng</p>
+            <p>/xorev</p>
+            <p>/cinco</p>
+            <div class="social-links">
+                <a href="https://spotify.com/xo.yves"><img src="https://media.discordapp.net/attachments/1239003993984991332/1243911934722445372/Spotify_logo_without_text.svg.png?ex=665332c4&is=6651e144&hm=62d159b50cd9bda5c081b6aab65303e00877274ff197219c56d72d9e18c5af80&" alt="Spotify"></a>
+                <a href="https://discord.com/invite/revshit"><img src="https://media.discordapp.net/attachments/1239003993984991332/1243911934416519279/pngwing.com_3.png?ex=665332c3&is=6651e143&hm=484f1e3c8ce157b41ab88fd85b34c4f246d31749103eb067aec40d7fca4b8f80" alt="Discord"></a>
+                <a href="https://instagram.com/xyky.of"><img src="https://media.discordapp.net/attachments/1239003993984991332/1243911934034579527/pngwing.com_4.png?ex=665332c3&is=6651e143&hm=f0b00870f749ea250c9640587ea40282be9294fbcedda774d81a037c8ff3db8c" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <audio id="backgroundAudio" autoplay loop>
+        <source src="https://drive.google.com/file/d/1vnw8zNd6bgIC0o0D6aHrgBCja04gqhma/view?usp=sharing" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <!-- Mute button -->
+    <button class="mute-button" onclick="toggleMute()">
+        <img src="https://media.discordapp.net/attachments/1239003993984991332/1243924786720280576/pngwing.com_5.png?ex=66533ebc&is=6651ed3c&hm=ce1b35602f55271efc516562a543adef791b11a90c0433f367b262d5f9c3f14e&" alt="Mute">
+        <div class="mute-indicator">Muted</div>
+    </button>
+    <script>
+        var audio = document.getElementById('backgroundAudio');
+        var muteButton = document.querySelector('.mute-button');
+
+        function toggleMute() {
+            if (audio.muted) {
+                audio.muted = false;
+                muteButton.classList.remove('muted');
+                muteButton.querySelector('.mute-indicator').textContent = 'Muted';
+            } else {
+                audio.muted = true;
+                muteButton.classList.add('muted');
+                muteButton.querySelector('.mute-indicator').textContent = 'Unmuted';
+            }
+        }
+    </script>
+</body>
+</html>
